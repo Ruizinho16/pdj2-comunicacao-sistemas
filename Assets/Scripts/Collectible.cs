@@ -9,10 +9,7 @@ public class Collectible : MonoBehaviour, IInteractable
 
     public void Interact(GameObject interactor)
     {
-        if (collected)
-        {
-            return;
-        }
+        if (collected) return;
 
         if (scoreSystem == null)
         {
@@ -20,6 +17,8 @@ public class Collectible : MonoBehaviour, IInteractable
             return;
         }
 
-        Debug.LogWarning("TODO: pedir ao ScoreSystem para adicionar pontos e desativar o item.", this);
+        collected = true;                       // impede recolhas repetidas
+        scoreSystem.AddPoints(points);          // chamada direta ao sistema
+        gameObject.SetActive(false);            // item deixa de poder ser recolhido
     }
 }

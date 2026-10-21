@@ -28,33 +28,30 @@ public class ScoreDoor : MonoBehaviour
             return;
         }
 
-        // TODO: subscrever a ScoreChanged e verificar a pontuação atual.
+        scoreSystem.ScoreChanged += CheckScore;
+        CheckScore(scoreSystem.CurrentScore); // lê estado inicial
     }
 
     private void OnDisable()
     {
-        // TODO: remover a subscrição a ScoreChanged.
+        if (scoreSystem != null)
+            scoreSystem.ScoreChanged -= CheckScore;
     }
 
     private void CheckScore(int currentScore)
     {
-        if (opened || currentScore < requiredScore)
-        {
-            return;
-        }
+        if (opened || currentScore < requiredScore) return;
 
-        // TODO: marcar a porta como aberta, transformar o collider em trigger
-        // e desativar o MeshRenderer sem desativar o GameObject.
+        opened = true;
+        doorCollider.isTrigger = true;      // deixa de bloquear
+        doorRenderer.enabled = false;       // deixa de ser visível
+        // GameObject NÃO é desativado: precisa de receber OnTriggerEnter
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!opened || !other.CompareTag("Player"))
-        {
-            return;
-        }
+        if (!opened || !other.CompareTag("Player")) return;
 
-        // TODO (exercício extra): notificar que o Player entrou na porta.
-        // Usa OnDoorEntered para que um apresentador independente mostre a vitória.
+        OnDoorEntered?.Invoke();
     }
 }

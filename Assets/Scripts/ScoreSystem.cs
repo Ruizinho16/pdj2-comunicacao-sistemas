@@ -17,6 +17,7 @@ public class ScoreSystem : MonoBehaviour
             return;
         }
 
-        Debug.LogWarning("TODO: atualizar a pontuação e emitir ScoreChanged.", this);
+        score += amount;                 // 1) atualiza o estado
+        ScoreChanged?.Invoke(score);     // 2) só depois notifica
     }
 }

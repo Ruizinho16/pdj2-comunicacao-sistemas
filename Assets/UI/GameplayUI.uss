@@ -7,7 +7,7 @@
     font-size: 28px;
     color: rgb(0, 255, 0);
     -unity-text-align: middle-left;
-    text-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
+    text-shadow: 0 0 10px rgb(0, 0, 0);
 }
 
 .game-over-panel {
@@ -24,9 +24,9 @@
 .game-over-title {
     font-size: 80px;
     color: rgb(255, 0, 0);
-    margin: 0px;
+    margin: 0;
     -unity-text-align: middle-center;
-    text-shadow: 0px 0px 20px rgba(255, 0, 0, 1);
+    text-shadow: 0 0 20px rgb(255, 0, 0);
 }
 
 .game-over-subtitle {
@@ -34,7 +34,7 @@
     color: rgb(255, 255, 255);
     margin-top: 30px;
     -unity-text-align: middle-center;
-    text-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
+    text-shadow: 0 0 10px rgb(0, 0, 0);
 }
 
 #score-label {
@@ -44,3 +44,5 @@
     color: white;
     font-size: 24px;
 }
+
+
